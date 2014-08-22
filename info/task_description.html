@@ -1,44 +1,82 @@
-<p>
-    <i>( Describe task in general )</i>
+<p class="story">
+    "I had often heard of the superstition of sailors respecting apparitions, but had never given much credit to the
+    report; it seems that some years since a Dutch man-of-war was lost off the Cape of Good Hope, and every soul on
+    board perished; her consort weathered the gale, and arrived soon after at the Cape. Having refitted, and returning
+    to Europe, they were assailed by a violent tempest nearly in the same latitude. In the night watch some of the
+    people saw, or imagined they saw, a vessel standing for them under a press of sail, as though she would run them
+    down: one in particular affirmed it was the ship that had foundered in the former gale, and that it must certainly
+    be her, or the apparition of her; but on its clearing up, the object, a dark thick cloud, disappeared. Nothing could
+    do away the idea of this phenomenon on the minds of the sailors; and, on their relating the circumstances when they
+    arrived in port, the story spread like wild-fire, and the supposed phantom was called the Flying Dutchman. From the
+    Dutch the English seamen got the infatuation, and there are very few Indiamen, but what has some one on board, who
+    pretends to have seen the apparition."<br>
+    George Barrington, "Voyage to Botany Bay"
 </p>
 
 <p>
-    Sum two passed ints
+    After we taught how to recognize the Ghost ship we identified it. This is
+    <a href="http://en.wikipedia.org/wiki/Flying_Dutchman">"Flying Dutchman"</a>.
+    This knowledge gives us advantage because that ship can never port and approach to coasts.
+    So if we know region map and where Flying Dutchman appears usually, then we can make the map with safe zones.
+</p>
+
+<p>
+    You are given a region map as an array with strings, which can be represented as 2D array.
+    Waters are marked as <strong>"."</strong> and lands as <strong>"X"</strong>.
+    Cells where can appear the Ghost Ship are marked with <strong>"D"</strong>.
+    You should finish the map and mark (replace water cells)
+    safe cells as <strong>"S"</strong> and dangerous as <strong>"U"</strong>.
+</p>
+<p>
+    The Ghost Ship can move at neighbour cells at four direction - up, down, left, right.
+    But it can not move to cells which are placed near lands including diagonals.
+    So safe cells are cells where Flying Dutchman can not approach from all possible positions.
 </p>
 
 <p style="text-align: center;">
-    <img class="for_info_only" title="example" src="{{MEDIA}}example.png" alt="example" width="392px"/>
-    <img class="for_editor_only" title="example" src="{{MEDIA}}example.png" alt="example" width="380px"/>
-</p>
-
-<p><i>( Explain input and output values )</i></p>
-<p>
-    <strong>Input: </strong> Two arguments. Both are int
+    <img title="safe-coast" src="{{MEDIA}}safe-coast.svg" alt="safe-coast" style="max-width: 600px"/>
 </p>
 
 <p>
-    <strong>Output: </strong> Int. 
+    <pre>
+(“D..XX.....”,        (“DUSXXSUUUU”,
+ “...X......”,         “UUSXSSSSSU”,
+ “.......X..”,         “UUSSSSSXSU”,
+ “.......X..”,         “UUSSSSSXSU”,
+ “...X...X..”,  ===\   “UUSXSSSXSU”,
+ “...XXXXX..”,  ===/   “SSSXXXXXSU”,
+ “X.........”,         “XSSSSSSSSU”,
+ “..X.......”,         “SSXSUUUUUU”,
+ “..........”,         “USSSUUUUUU”,
+ “D...X....D”)         “DUUUXUUUUD”)
+    </pre>
 </p>
 
+<p>
+    <strong>Input: </strong> A region map as a tuple of strings.
+</p>
+
+<p>
+    <strong>Output: </strong> The finished map as a list/tuple of strings.
+</p>
 
 
 <div class="for_info_only">
-    <p><i>( Put some usage examples )</i></p>
     <p>
         <strong>Example:</strong>
     </p>
     <pre class="brush: python">
-checkio(3, 2) == 5
-checkio(5, 7) == 12
+
     </pre>
 </div>
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    <i>(Here you can explain how it can be used in development and what is usage of this.)</i>
 </p>
 
 <p>
-    <strong>Precondition:</strong>
-    <i>Constraints for Input</i>
+    <strong>Precondition:</strong><br>
+    3 &le; len(region_map) &le; 10<br>
+    all(3 &le; len(row) &le; 10 and len(row) == len(region_map[0]) for row in region_map)<br>
+    any("D" in row for row in region_map)<br>
 </p>
