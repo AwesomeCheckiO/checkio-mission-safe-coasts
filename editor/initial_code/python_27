@@ -1,11 +1,25 @@
-def checkio(a, b):
-    """
-        sums two passed arguments
-    """
-    return None
+def finish_map(region_map):
+    return region_map
+
 
 if __name__ == '__main__':
     #These "asserts" using only for self-checking and not necessary for auto-testing
-    assert checkio(3, 2) == 5
-    assert checkio(5, 7) == 12
-    print('Done')
+    assert finish_map(("D..XX.....",
+                       "...X......",
+                       ".......X..",
+                       ".......X..",
+                       "...X...X..",
+                       "...XXXXX..",
+                       "X.........",
+                       "..X.......",
+                       "..........",
+                       "D...X....D")) == ("DDSXXSDDDD",
+                                          "DDSXSSSSSD",
+                                          "DDSSSSSXSD",
+                                          "DDSSSSSXSD",
+                                          "DDSXSSSXSD",
+                                          "SSSXXXXXSD",
+                                          "XSSSSSSSSD",
+                                          "SSXSDDDDDD",
+                                          "DSSSSSDDDD",
+                                          "DDDSXSDDDD"), "Example"
