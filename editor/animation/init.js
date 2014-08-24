@@ -40,10 +40,10 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
             }
 
             //YOUR FUNCTION NAME
-            var fname = 'checkio';
+            var fname = 'finish_map';
 
             var checkioInput = data.in;
-            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput) + ')';
+            var checkioInputStr = fname + '(' + JSON.stringify(checkioInput).replace("[", "(").replace("]", ")") + ')';
 
             var failError = function (dError) {
                 $content.find('.call').html(checkioInputStr);
@@ -69,6 +69,8 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
             $content.find('.call').html(checkioInputStr);
             $content.find('.output').html('Working...');
 
+            var svg = new MapSvg($content.find(".explanation")[0]);
+            svg.prepare(checkioInput);
 
             if (data.ext) {
                 var rightResult = data.ext["answer"];
@@ -78,6 +80,12 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
 
                 //if you need additional info from tests (if exists)
                 var explanation = data.ext["explanation"];
+
+                setTimeout(function() {
+                    svg.animate(rightResult);
+                }, 1000);
+
+
                 $content.find('.output').html('&nbsp;Your result:&nbsp;' + JSON.stringify(userResult));
                 if (!result) {
                     $content.find('.answer').html('Right result:&nbsp;' + JSON.stringify(rightResult));
@@ -120,23 +128,76 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
 //                this_e.sendToConsoleCheckiO("something");
 //            });
 //        });
+        function MapSvg(dom) {
+            var colorOrange4 = "#F0801A";
+            var colorOrange3 = "#FA8F00";
+            var colorOrange2 = "#FAA600";
+            var colorOrange1 = "#FABA00";
 
-        var colorOrange4 = "#F0801A";
-        var colorOrange3 = "#FA8F00";
-        var colorOrange2 = "#FAA600";
-        var colorOrange1 = "#FABA00";
+            var colorBlue4 = "#294270";
+            var colorBlue3 = "#006CA9";
+            var colorBlue2 = "#65A1CF";
+            var colorBlue1 = "#8FC7ED";
 
-        var colorBlue4 = "#294270";
-        var colorBlue3 = "#006CA9";
-        var colorBlue2 = "#65A1CF";
-        var colorBlue1 = "#8FC7ED";
+            var colorGrey4 = "#737370";
+            var colorGrey3 = "#9D9E9E";
+            var colorGrey2 = "#C5C6C6";
+            var colorGrey1 = "#EBEDED";
 
-        var colorGrey4 = "#737370";
-        var colorGrey3 = "#9D9E9E";
-        var colorGrey2 = "#C5C6C6";
-        var colorGrey1 = "#EBEDED";
+            var colorWhite = "#FFFFFF";
 
-        var colorWhite = "#FFFFFF";
+            var p = 5;
+            var cell = 40;
+
+            var map = [];
+            var paper;
+
+            var sizeX, sizeY;
+
+            var attrCell = {"stroke": colorBlue4, "stroke-width": 2, "fill": colorBlue1};
+
+
+            this.prepare = function (data) {
+                sizeX = p * 2 + cell * data[0].length;
+                sizeY = p * 2 + cell * data.length;
+                paper = Raphael(dom, sizeX, sizeY);
+
+                for (var row = 0; row < data.length; row++) {
+                    var temp = [];
+                    for (var col = 0; col < data[row].length; col++) {
+                        var c = paper.rect(
+                            p + cell * col,
+                            p + cell * row,
+                            cell, cell).attr(attrCell);
+                        if (data[row][col] == "X") {
+                            c.attr("fill", colorGrey4);
+                        }
+                        else if (data[row][col] == "D") {
+                            c.attr("fill", colorOrange1);
+                        }
+                        temp.push(c);
+                    }
+                    map.push(temp);
+                }
+            };
+
+            this.animate = function(newData) {
+                var step = 500;
+                for (var row = 0; row < newData.length; row++) {
+                    for (var col = 0; col < newData[row].length; col++) {
+                        var c = map[row][col];
+                        var symb = newData[row][col];
+                        if (symb == "S") {
+                            c.animate({"fill": colorBlue2}, step);
+                        }
+                        else if (symb == "D") {
+                            c.animate({"fill": colorOrange1}, step);
+                        }
+                    }
+                }
+            }
+        }
+
         //Your Additional functions or objects inside scope
         //
         //
