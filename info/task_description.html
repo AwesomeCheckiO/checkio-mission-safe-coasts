@@ -14,29 +14,30 @@
     -- George Barrington, "Voyage to Botany Bay"
 </p>
 
+
 <p>
-    After we taught
-    <a href="http://www.checkio.org/mission/ghost-detect/share/27bd9449c1c12806c6c78dc507b52bcc/">
-        how to recognize the Ghost ship
-    </a>
-    we identified it. This is
+    After we have learned <a href="http://www.checkio.org/mission/ghost-detect/share/27bd9449c1c12806c6c78dc507b52bcc/">how
+    to recognize the Ghost ship</a>
+    we identified it as the legendary
+
     <a href="http://en.wikipedia.org/wiki/Flying_Dutchman">"Flying Dutchman"</a>.
-    This knowledge gives us advantage because that ship can never port and approach to coasts.
-    So if we know region map and where Flying Dutchman appears usually, then we can make the map with safe zones.
+    This knowledge gives us advantage, because we know that the ship can never enter port or approach the coast. So, if
+    we have a regional map and the locations where Flying Dutchman typically appears, then we can make a detailed map
+    with defined safe zones.
 </p>
 
 <p>
-    You are given a region map as an array with strings, which can be represented as 2D array.
-    Waters are marked as <strong>"."</strong> and lands as <strong>"X"</strong>.
-    Cells where can appear the Ghost Ship are marked with <strong>"D"</strong>.
-    You should finish the map and mark (replace water cells)
-    safe cells as <strong>"S"</strong> and dangerous as <strong>"D"</strong> (Yes as cells with Ghost Ship).
+    You are given a regional map as an array with strings, which is represented as 2D array. Water cells are marked as
+    <strong>"."</strong> and land cells as <strong>"X"</strong>. Cells where the Ghost Ship can appear are marked with a
+    <strong>""D"</strong>. You should finish the map
+    and mark (replace the relevant water cells) all of the safe cells with an <strong>"S"</strong> and the dangerous ones
+    as <strong>"D"</strong> (cells
+    the Ghost Ship can reach).
 </p>
 <p>
-    The Ghost Ship can move at neighbour cells at four direction - up, down, left, right.
-    But it can not move to cells which are placed near lands including diagonals.
-    Flying Dutchman can not go out of the map.
-    So safe cells are cells where Flying Dutchman can not approach from all possible positions.
+    The Ghost Ship can move to neighbour cells at in the cardinal directions - up, down, left, and right. It cannot move
+    to cells which are placed next to land including cells at the diagonals. So, the safe cells are cells where Flying
+    Dutchman cannot approach from all possible directions.
 </p>
 
 <p style="text-align: center;">
@@ -44,7 +45,7 @@
 </p>
 
 <p>
-    <pre style="text-align: center">
+<pre style="text-align: center">
 ("D..XX.....",        ("DDSXXSDDDD",
  "...X......",         "DDSXSSSSSD",
  ".......X..",         "DDSSSSSXSD",
@@ -60,7 +61,7 @@
 </p>
 
 <p>
-    <strong>Input: </strong> A region map as a tuple of strings.
+    <strong>Input: </strong> A regional map as a tuple of strings.
 </p>
 
 <p>
@@ -97,12 +98,13 @@ finish_map(("D..XX.....",
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    This concept can be used to analyse spreading zones with "defences" structures.
+    This concept can be used to model the placement of defensive structures in strategy games, or model more real-life
+    things such as how an invasive species would react to an inhibiting agent such as ant traps, or weed killer.
 </p>
 
 <p>
     <strong>Precondition:</strong><br>
-    3 &le; len(region_map) &le; 10<br>
-    all(3 &le; len(row) &le; 10 and len(row) == len(region_map[0]) for row in region_map)<br>
-    any("D" in row for row in region_map)<br>
+    3 &le; len(regional_map) &le; 10<br>
+    all(3 &le; len(row) &le; 10 and len(row) == len(regional_map[0]) for row in regional_map)<br>
+    any("D" in row for row in regional_map)<br>
 </p>

@@ -1,5 +1,5 @@
-def finish_map(region_map):
-    return region_map
+def finish_map(regional_map):
+    return regional_map
 
 
 if __name__ == '__main__':
