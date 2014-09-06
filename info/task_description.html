@@ -1,47 +1,70 @@
-<p class="story">
-    <img src="{{MEDIA}}ship2.png" title="ship" width="800px">
-    "I had often heard of the superstition of sailors respecting apparitions, but had never given much credit to the
-    report; it seems that some years since a Dutch man-of-war was lost off the Cape of Good Hope, and every soul on
-    board perished; her consort weathered the gale, and arrived soon after at the Cape. Having refitted, and returning
-    to Europe, they were assailed by a violent tempest nearly in the same latitude. In the night watch some of the
-    people saw, or imagined they saw, a vessel standing for them under a press of sail, as though she would run them
-    down: one in particular affirmed it was the ship that had foundered in the former gale, and that it must certainly
-    be her, or the apparition of her; but on its clearing up, the object, a dark thick cloud, disappeared. Nothing could
-    do away the idea of this phenomenon on the minds of the sailors; and, on their relating the circumstances when they
-    arrived in port, the story spread like wild-fire, and the supposed phantom was called the Flying Dutchman. From the
-    Dutch the English seamen got the infatuation, and there are very few Indiamen, but what has some one on board, who
-    pretends to have seen the apparition."<br>
-    -- George Barrington, "Voyage to Botany Bay"
-</p>
+<div class="story">
+    <div style="text-align: center">
+        <img src="{{MEDIA}}ship2.png" title="ship" width="740px">
+    </div>
+    <p>
+        "I had often heard of the superstition of sailors respecting
+        apparitions, but had never given much credit to the
+        report; it seems that some years since a Dutch man-of-war was lost off
+        the Cape of Good Hope, and every soul on
+        board perished; her consort weathered the gale, and arrived soon after
+        at the Cape. Having refitted, and returning
+        to Europe, they were assailed by a violent tempest nearly in the same
+        latitude. In the night watch some of the
+        people saw, or imagined they saw, a vessel standing for them under a
+        press of sail, as though she would run them
+        down: one in particular affirmed it was the ship that had foundered in
+        the former gale, and that it must certainly
+        be her, or the apparition of her; but on its clearing up, the object, a
+        dark thick cloud, disappeared. Nothing could
+        do away the idea of this phenomenon on the minds of the sailors; and, on
+        their relating the circumstances when they
+        arrived in port, the story spread like wild-fire, and the supposed
+        phantom was called the Flying Dutchman. From the
+        Dutch the English seamen got the infatuation, and there are very few
+        Indiamen, but what has some one on board, who
+        pretends to have seen the apparition."<br>
+        -- George Barrington, "Voyage to Botany Bay"
+    </p>
+</div>
 
 
 <p>
-    After we have learned <a href="http://www.checkio.org/mission/ghost-detect/share/27bd9449c1c12806c6c78dc507b52bcc/">how
+    After we have learned <a
+        href="http://www.checkio.org/mission/ghost-detect/share/27bd9449c1c12806c6c78dc507b52bcc/">how
     to recognize the Ghost ship</a>
     we identified it as the legendary
 
     <a href="http://en.wikipedia.org/wiki/Flying_Dutchman">"Flying Dutchman"</a>.
-    This knowledge gives us advantage, because we know that the ship can never enter port or approach the coast. So, if
-    we have a regional map and the locations where Flying Dutchman typically appears, then we can make a detailed map
+    This knowledge gives us advantage, because we know that the ship can never
+    enter port or approach the coast. So, if
+    we have a regional map and the locations where Flying Dutchman typically
+    appears, then we can make a detailed map
     with defined safe zones.
 </p>
 
 <p>
-    You are given a regional map as an array with strings, which is represented as 2D array. Water cells are marked as
-    <strong>"."</strong> and land cells as <strong>"X"</strong>. Cells where the Ghost Ship can appear are marked with a
+    You are given a regional map as an array with strings, which is represented
+    as 2D array. Water cells are marked as
+    <strong>"."</strong> and land cells as <strong>"X"</strong>. Cells where the
+    Ghost Ship can appear are marked with a
     <strong>""D"</strong>. You should finish the map
-    and mark (replace the relevant water cells) all of the safe cells with an <strong>"S"</strong> and the dangerous ones
+    and mark (replace the relevant water cells) all of the safe cells with an
+    <strong>"S"</strong> and the dangerous ones
     as <strong>"D"</strong> (cells
     the Ghost Ship can reach).
 </p>
 <p>
-    The Ghost Ship can move to neighbour cells at in the cardinal directions - up, down, left, and right. It cannot move
-    to cells which are placed next to land including cells at the diagonals. So, the safe cells are cells where Flying
+    The Ghost Ship can move to neighbour cells at in the cardinal directions -
+    up, down, left, and right. It cannot move
+    to cells which are placed next to land including cells at the diagonals. So,
+    the safe cells are cells where Flying
     Dutchman cannot approach from all possible directions.
 </p>
 
 <p style="text-align: center;">
-    <img title="safe-coast" src="{{MEDIA}}safe-coasts.svg" alt="safe-coast" style="max-width: 600px"/>
+    <img title="safe-coast" src="{{MEDIA}}safe-coasts.svg" alt="safe-coast"
+         style="max-width: 600px"/>
 </p>
 
 <p>
@@ -98,13 +121,16 @@ finish_map(("D..XX.....",
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    This concept can be used to model the placement of defensive structures in strategy games, or model more real-life
-    things such as how an invasive species would react to an inhibiting agent such as ant traps, or weed killer.
+    This concept can be used to model the placement of defensive structures in
+    strategy games, or model more real-life
+    things such as how an invasive species would react to an inhibiting agent
+    such as ant traps, or weed killer.
 </p>
 
 <p>
     <strong>Precondition:</strong><br>
     3 &le; len(regional_map) &le; 10<br>
-    all(3 &le; len(row) &le; 10 and len(row) == len(regional_map[0]) for row in regional_map)<br>
+    all(3 &le; len(row) &le; 10 and len(row) == len(regional_map[0]) for row in
+    regional_map)<br>
     any("D" in row for row in regional_map)<br>
 </p>
